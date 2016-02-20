@@ -1,0 +1,32 @@
+#!/usr/local/bin/bash
+source ~/Documents/scripts/colors.txt
+
+
+
+echo -e "${cyanclair}NOM :${neutre}"
+read name
+echo -e "${cyanclair}PRENOM :${neutre}"
+read prenom
+echo -e "${cyanclair}DDN :${neutre}"
+read ddn
+echo -e "${cyanclair}DIAGNOSTIC :${neutre}"
+read diag
+
+
+
+
+
+
+echo -e $name, $prenom, $ddn, $diag >> ~/Dropbox/.dossiers.csv
+
+
+while true; do
+    read -p "Any other file ? (Y/n) " again
+    case $again in
+	[Yy]* ) ~/Documents/scripts/patients;; 
+	[Nn]* ) break;;
+	* ) echo -e "Please answer yes or no.\n ";;
+    esac
+done
+
+

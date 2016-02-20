@@ -1,0 +1,6 @@
+source /Users/Tom/Documents/Scripts/colors.txt
+
+echo -e  ${bleuclair}Extraction des fichiers ."$1"${neutre}
+
+find -s . -iname "*.$1" -exec chflags nouchg {} \;
+find -s . -iname "*.$1" -exec mv {} . \;
