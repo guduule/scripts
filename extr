@@ -1,4 +1,5 @@
-source /Users/Tom/Documents/Scripts/colors.txt
+#!/usr/local/bin/bash
+source colors.txt
 
 echo -e  ${bleuclair}Extraction des fichiers ."$1"${neutre}
 
