@@ -1,8 +1,0 @@
-#!/usr/local/bin/bash
-
-latex ./"$1.dbj"
-cp ./"$1.bst" ~/texmf/bibtex/bst/
-texhash ~/texmf
-cd ~
-
-

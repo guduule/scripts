@@ -1,0 +1,10 @@
+#!/usr/local/bin/bash
+
+pandoc \
+    -M author="Thomas Barba" \
+    -M date="$DATE" \
+    -f latex+raw_tex -N -R \
+    --smart \
+    --bibliography=/Users/tom/Documents/LaTeX/library.bib \
+    --csl=/Users/tom/Documents/LaTeX/styles/$1.csl \
+    -o $2.pdf $2.tex
