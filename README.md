@@ -1,2 +1,0 @@
-# scripts
-petits scripts perso

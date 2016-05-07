@@ -1,5 +1,5 @@
+#!/usr/local/bin/bash
 #DEFINITION DES VARIABLES DU NOUVEAU TITRE
-source /Users/Tom/Documents/Scripts/colors.txt
 
 echo -e  "\033[36mCible (fichiers a renommer)\033[0m"
 read cible

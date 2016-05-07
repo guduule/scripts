@@ -1,0 +1,43 @@
+#!/usr/local/bin/bash
+
+# CLEAN DS_STORE
+find . -type f -name '*.DS_Store' -ls -delete 1>/dev/null 2>&1 
+
+# Verification de l'accessibilité de l'ordinateur
+connected=`ssh -o BatchMode=yes -o ConnectTimeout=5 familial echo 1 2>/dev/null || echo 0`
+
+if [ $connected -eq 1 ]
+then
+# Liste des dossiers à sauvegarder
+		echo -e "\n\033[32;mPublications\033[0;m"
+		rsync -arvz --progress --delete ~/Google\ Drive/publications/ tom@192.168.1.14:/home/tom/backup/mac15.tom/publication/
+
+		echo -e "\n\033[32;mPhD\033[0;m"
+		rsync -arvz --progress --delete ~/Google\ Drive/PhD/ tom@192.168.1.14:/home/tom/backup/mac15.tom/PhD/
+		echo -e "\n\033[32;mMedicine\033[0;m"
+		rsync -arvz --progress --delete ~/Documents/medicine/ tom@192.168.1.14:/home/tom/backup/mac15.tom/medicine/
+		
+		echo -e "\n\033[32;mDocuments officiels\033[0;m"
+		rsync -arvz --progress --delete ~/Google\ Drive/documents\ officiels/ tom@192.168.1.14:/home/tom/backup/mac15.tom/officiel/
+		
+		echo -e "\n\033[32;mBanque\033[0;m"
+		rsync -arvz --progress --delete ~/Documents/banque/ tom@192.168.1.14:/home/tom/backup/mac15.tom/banque/
+
+		echo -e "\n\033[32;mCharges\033[0;m"
+		rsync -arvz --progress --delete ~/Documents/charges/ tom@192.168.1.14:/home/tom/backup/mac15.tom/charges/
+
+
+		
+		echo -e "\n\033[32;mDesktop\033[0;m"
+		rsync -arvz --progress --delete ~/Desktop/ tom@192.168.1.14:/home/tom/backup/mac15.tom/desktop/
+		
+		echo -e "\n\033[32;mCharges\033[0;m"
+		rsync -arvz --progress --delete ~/Documents/charges/ tom@192.168.1.14:/home/tom/backup/mac15.tom/charges/
+		echo -e "\n\033[32;mRecettes\033[0;m"
+		rsync -arvz --progress --delete ~/Documents/recettes/ tom@192.168.1.14:/home/tom/backup/mac15.tom/recettes/
+		
+		echo -e "\n\033[32;mLivres\033[0;m"
+		rsync -arvz --progress --delete /Users/Tom/Documents/livres/ tom@192.168.1.14:/home/tom/backup/mac15.tom/livres/
+else
+		echo -e "\n\033[31;mOrdinateur familial hors ligne\033[0;m\n"
+fi

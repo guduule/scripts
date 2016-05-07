@@ -1,0 +1,11 @@
+#!/usr/local/bin/bash
+
+# Now let's create a script which will take a filename as its first argument and create a dated copy of the file. eg. if our file was named file1.txt it would create a copy such as 2016-04-01_file1.txt. (To achieve this you will probably want to play with command substitution and the command date)
+
+name=${1%.*}
+ext=${1##*.}
+date=$(date +%d%b)
+newname=$(echo $name"_"$date.TB.$ext)
+
+mv -v $1 $newname
+

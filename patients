@@ -17,16 +17,35 @@ read diag
 
 
 
-echo -e $name, $prenom, $ddn, $diag >> ~/Dropbox/.dossiers.csv
+echo -e $name, $prenom, $ddn, $diag >> ~/Documents/medicine/dossiers.csv
 
 
 while true; do
     read -p "Any other file ? (Y/n) " again
     case $again in
-	[Yy]* ) ~/Documents/scripts/patients;; 
+	[Yy]* ) ~/GitHub/scripts/patients;; 
 	[Nn]* ) break;;
 	* ) echo -e "Please answer yes or no.\n ";;
     esac
 done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

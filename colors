@@ -1,0 +1,30 @@
+#!/usr/local/bin/bash
+
+noir='\033[0;30;m'
+gris='\033[1;30;m'
+rougefonce='\033[0;31;m'
+rose='\033[1;31;m'
+vertfonce='\033[0;32;m'
+vertclair='\033[1;32;m'
+orange='\033[0;33;m'
+jaune='\033[1;33;m'
+bleufonce='\033[0;34;m'
+bleuclair='\033[1;34;m'
+violetfonce='\033[0;35;m'
+violetclair='\033[1;35;m'
+cyanfonce='\033[0;36;m'
+cyanclair='\033[1;36;m'
+grisclair='\033[0;37;m'
+blanc='\033[1;37;m'
+neutre='\033[0;m'
+
+for i in {30..37..1}
+do
+		echo -e "\033[;$i;m Couleur [0;$i;m "
+		echo -e "\033[;$i;m Couleur [1;$i;m "
+done
+
+		
+
+
+

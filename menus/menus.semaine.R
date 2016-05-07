@@ -6,7 +6,7 @@ getwd()
 
 
 .env$menus <- function() {
-  setwd("~/Documents/scripts/menus/")
+  setwd("~/GitHub/scripts/menus/")
   require(gridExtra)
   require(gdata)
   require(timeDate)
@@ -48,4 +48,5 @@ getwd()
   o("Menus.pdf")
   }
 
-setwd("~/Dropbox/publications/")
+attach(.env)
+setwd("~/Google Drive/publications/")

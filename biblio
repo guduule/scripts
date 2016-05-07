@@ -8,3 +8,4 @@ pandoc \
     --bibliography=/Users/tom/Documents/LaTeX/library.bib \
     --csl=/Users/tom/Documents/LaTeX/styles/$1.csl \
     -o $2.pdf $2.tex
+
