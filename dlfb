@@ -1,14 +1,39 @@
 #!/usr/local/bin/bash
 
-freebox
-cd ~/Downloads/
-wget $1
+echo -e "\033[35mSave as : \033[0m"
+read name
 
-filename=$( gls -t . | head -1 )
 
-mv $filename /media/freebox/Vidéos/$2
-ejectfb
-sms "Copie sur fb terminée. FB éjectée"
+
+
+# Monter la freebox
+sudo mount -t cifs //mafreebox.freebox.fr/Disque\ dur/ /media/freebox/ -o user=freebox,password=Pyosta6ne,uid=1000,gid=1000,rw  2>/dev/null
+
+# Télécharger le fichier d'interet
+
+
+if [[ "$1" == *torrent ]]; then
+    mv "$1" ~/Downloads/ &2>/dev/null
+    cd ~/Downloads/
+    aria2c -c --seed-time=0 --index-out=1=$name ~/Downloads/"$1"
+else
+    cd ~/Downloads/
+    wget -O $name "$1" 
+fi
+
+
+
+
+# Copier le fichier d'interet sur la FB
+echo -e "\n\0033[0;36mTransfert du fichier sur freeboxen cours\n"
+scp $name /media/freebox/Vidéos/ && curl "https://smsapi.free-mobile.fr/sendmsg?user=28628108&pass=3ymqZMHBVYuxAU&msg=Transfert de $name terminé."
+echo -e "\0033[0;36mCopie terminée\n\0033[0m"
+
+# Ejecter la FB
+cd ~ && sudo umount /media/freebox
+
+
+
 exit
 
 
