@@ -1,32 +1,42 @@
 #!/usr/local/bin/bash
-echo -e "\n\033[0;36mQuelles pages ? (ex: 3, 6-9 ; défaut= toutes)\033[0;m"
-pages=${pages:"toutes"}
-read pages
+# echo -e "\n\033[0;36mQuelles pages ? (ex: 3, 6-9 ; défaut= toutes)\033[0;m"
+# pages=${ pages:"toutes" }
+# name=${ basename $1 }
+# read pages
+
+# if [ $(head -c 4 "$1") = "%PDF" ]; then
+#     if [[ "$1" = *[[:space:]]* ]]; then
+# 	# substitute space with "_" character and consequently rename the file
+# 	newname=$( echo "$name" | tr ' ' '_' )
+# 	mv "$name" "$newname"
+# #	newname=$( echo newname.pdf )
+#    else
+# 	newname=$( echo "$1" )
+#     fi
+
+#     cp "$newname" ~/toprint.pdf
+#     scp ~/toprint.pdf familial:~/Desktop/print/
+    
+#     if [ $pages = "toutes" ]; then
+# 	ssh -l tom familial "cd ~/Desktop/print; lp toprint.pdf ; rm toprint.pdf && echo -e '\033[32mImpression en cours...\033[0;m'"
+#     else
+# 	ssh -l tom familial "cd ~/Desktop/print; lp -P '$pages' toprint.pdf ; rm toprint.pdf && echo -e '\033[32mImpression en cours...\033[0;m'"
+#     fi
+#     rm ~/toprint.pdf
+#     else
+
+#     echo -e "\033[31mIl faut imprimer un fichier PDF !"
+# fi
+
 
 if [ $(head -c 4 "$1") = "%PDF" ]; then
-    if [[ "$1" = *[[:space:]]* ]]; then
-	# substitute space with "_" character and consequently rename the file
-	newname=$( echo "$1" | tr ' ' '_' )
-	mv "$1" "$newname"
-#	newname=$( echo newname.pdf )
-   else
-	newname=$( echo "$1" )
-    fi
-
-    cp "$newname" ~/toprint.pdf
+    cp "$1" ~/toprint.pdf
     scp ~/toprint.pdf familial:~/Desktop/print/
-    
-    if [ $pages = "toutes" ]; then
-	ssh -l tom familial "cd ~/Desktop/print; lp toprint.pdf ; rm toprint.pdf && echo -e '\033[32mImpression en cours...\033[0;m'"
-    else
-	ssh -l tom familial "cd ~/Desktop/print; lp -P '$pages' toprint.pdf ; rm toprint.pdf && echo -e '\033[32mImpression en cours...\033[0;m'"
-    fi
+    ssh -l tom familial "cd ~/Desktop/print; lp toprint.pdf && echo -e '\033[32mImpression en cours...\033[0;m'; rm toprint.pdf"
     rm ~/toprint.pdf
-    else
+else
 
     echo -e "\033[31mIl faut imprimer un fichier PDF !"
 fi
-
-
 
 

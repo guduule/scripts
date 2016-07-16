@@ -1,9 +1,8 @@
 #!/usr/local/bin/bash
 #DEFINITION DES VARIABLES DU NOUVEAU TITRE
-<<<<<<< HEAD:rename
 =======
 source ~/GitHub/scripts/colors.txt
->>>>>>> 688c8786990c613731eead1d638671af4b1138d0:newname
+
 
 echo -e  "\033[36mCible (fichiers a renommer)\033[0m"
 read cible
@@ -28,3 +27,14 @@ do fn=`echo $f|sed  's/^.*\([Ss]0..\)//p'`
    mv "$f" "$fn2"
 done
 	 
+
+
+
+
+
+
+
+
+
+
+
