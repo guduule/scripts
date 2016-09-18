@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 #DEFINITION DES VARIABLES DU NOUVEAU TITRE
-=======
+
 source ~/GitHub/scripts/colors.txt
 
 
@@ -14,7 +14,7 @@ echo -e "\033[36mSeason number\033[0m"
 read  season_number
 
 
-echo -e "\033[36mLanguage (default VOSTFR)\033[0m" 
+echo -e "\033[36mLanguage\033[0m" 
 read language
 language=${language:VOSTFR}
 
