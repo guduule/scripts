@@ -4,25 +4,18 @@ echo -e "\033[35mSave as : \033[0m"
 read name
 
 
-
-
-
 # Télécharger le fichier d'interet
 
-
-if [[ $1 == *torrent ]]; then
-    mv $1 ~/Downloads/
+if [[ "$1" == *torrent ]]; then
+    mv "$1" ~/Downloads/
     cd ~/Downloads/
-    aria2c -c --seed-time=0 --index-out=1=$name ~/Downloads/$1
+    aria2c -c --seed-time=0 --index-out=1="$name" ~/Downloads/"$1"
 else
     cd ~/Downloads/
-    wget -c -nv -O $name $1 
+    wget -c -nv -O "$name" "$1" 
 fi
 
 curl "https://smsapi.free-mobile.fr/sendmsg?user=28628108&pass=3ymqZMHBVYuxAU&msg=Download de $name terminé"
-
-
-
 
 exit
 

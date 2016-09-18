@@ -15,10 +15,10 @@ sudo mount -t cifs //mafreebox.freebox.fr/Disque\ dur/ /media/freebox/ -o user=f
 if [[ "$1" == *torrent ]]; then
     mv "$1" ~/Downloads/ &2>/dev/null
     cd ~/Downloads/
-    aria2c -c --seed-time=0 --index-out=1=$name ~/Downloads/"$1"
+    aria2c -c --seed-time=0 --index-out=1="$name" ~/Downloads/"$1"
 else
     cd ~/Downloads/
-    wget -O $name "$1" 
+    wget -O "$name" "$1" 
 fi
 
 
@@ -26,7 +26,7 @@ fi
 
 # Copier le fichier d'interet sur la FB
 echo -e "\n\0033[0;36mTransfert du fichier sur freeboxen cours\n"
-scp $name /media/freebox/Vidéos/ && curl "https://smsapi.free-mobile.fr/sendmsg?user=28628108&pass=3ymqZMHBVYuxAU&msg=Transfert de $name terminé."
+scp "$name" /media/freebox/Vidéos/ && curl "https://smsapi.free-mobile.fr/sendmsg?user=28628108&pass=3ymqZMHBVYuxAU&msg=Transfert de $name terminé."
 echo -e "\0033[0;36mCopie terminée\n\0033[0m"
 
 # Ejecter la FB

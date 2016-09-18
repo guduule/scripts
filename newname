@@ -1,9 +1,6 @@
 #!/usr/local/bin/bash
 #DEFINITION DES VARIABLES DU NOUVEAU TITRE
-<<<<<<< HEAD
 =======
-=======
->>>>>>> 6d25321ca0edcc24f1fde35ad99c51e0e9181991
 source ~/GitHub/scripts/colors.txt
 
 
