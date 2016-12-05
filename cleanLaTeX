@@ -1,0 +1,8 @@
+#!/usr/local/bin/bash
+source colors.txt
+echo -e ${darkred}"Cleaning $@"${neutre}
+find . \( -iname "$@.aux" -o -iname  "$@.log" -o -iname "$@.out" -o -iname "$@.tex~" -o -iname "$@.bib" \) -print -exec rm -rf {} \;
+
+exit
+
+

@@ -1,0 +1,25 @@
+#!/usr/local/bin/bash
+source ~/GitHub/scripts/colors 1>/dev/null
+
+FileOrUrl=$1
+user=$(echo $USER)
+ip=$(`echo hostname`)
+tty=$(`echo tty`)
+
+
+echo -e "\033[35mSave as : \033[0m"
+read name
+
+echo -e "\n033[;33;mShutdown after downloading..? (Y/n) "
+read shut2
+shut=$(echo $shut2 | tr '[:upper:]' '[:lower:]')
+
+ssh -t blanc "
+echo -e '${darkred}\nDownload in progress...${neutre}\n'
+tmux new-session -d -s Download
+tmux new-window
+tmux send 'dlfb2 \"$FileOrUrl\" \"$name\" $user $ip $tty $shut' ENTER
+"
+
+
+

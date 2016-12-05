@@ -1,30 +1,39 @@
 #!/usr/local/bin/bash
+black='\033[0;30m'
+gray='\033[1;30m'
+darkred='\033[0;31m'
+pink='\033[1;31m'
+darkgreen='\033[0;312m'
+lightgreen='\033[1;32m'
+orange='\033[0;33m'
+yellow='\033[1;33m'
+deepblue='\033[0;34m'
+lightblue='\033[1;34m'
+deeppurple='\033[0;35m'
+lightpurple='\033[1;35m'
+darkcyan='\033[0;36m'
+lightcyan='\033[1;36m'
+lightgray='\033[0;37m'
+white='\033[1;37m'
 
-noir='\033[0;30;m'
-gris='\033[1;30;m'
-rougefonce='\033[0;31;m'
-rose='\033[1;31;m'
-vertfonce='\033[0;32;m'
-vertclair='\033[1;32;m'
-orange='\033[0;33;m'
-jaune='\033[1;33;m'
-bleufonce='\033[0;34;m'
-bleuclair='\033[1;34;m'
-violetfonce='\033[0;35;m'
-violetclair='\033[1;35;m'
-cyanfonce='\033[0;36;m'
-cyanclair='\033[1;36;m'
-grisclair='\033[0;37;m'
-blanc='\033[1;37;m'
 neutre='\033[0;m'
 
-for i in {30..37..1}
+declare -a ListColors=(black gray darkred pink darkgreen lightgreen orange yellow deepblue lightblue deeppurple lightpurple darkcyan lightcyan white neutre)
+
+
+a=0
+col=30
+for i in "${ListColors[@]}" 
 do
-		echo -e "\033[;$i;m Couleur [0;$i;m "
-		echo -e "\033[;$i;m Couleur [1;$i;m "
+		echo -e "\033[$a;$col;m $i \\033\[$a;$col;m ${neutre}"
+	 	if [ $a -eq 0 ]; then
+				a=1
+		else
+				a=0
+				col=$((col +1))
+		fi
 done
 
-		
 
 
 

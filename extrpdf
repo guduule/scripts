@@ -1,0 +1,40 @@
+#!/bin/bash
+source ~/GitHub/scripts/colors.txt
+
+mkdir ./.temp/
+cp "$1" ./.temp/
+cd .temp
+
+# Décomposer le fichier pdf
+pdftk "$1" burst output %1d
+
+# Initialize quit so we enter the outer loop first time
+quit="N"
+
+while [ "$quit" = "N" ]
+do
+		echo -e "${cyanfonce}\nQuelles pages voulez-vous fusionner ? (ex: 3 5 7) ${neutre} "
+		read page1 page2 page3 page4 page5 page6 page7 page8 page9 page10
+		echo -e "${cyanfonce}Nom du fichier ? ${neutre} "
+		read filename
+		pdftk $page1 $page2 $page3 $page4 $page5 $page6 $page7 $page8 $page9 $page10 cat output "$filename".pdf
+		mv $filename.pdf ../
+# reset quit - so we enter the inner loop first time
+		quit=""
+
+#we want to repeat until quit is Y or N: 
+#while quit is not "Y" and quit is not "N"
+		while [ "$quit" != "Y" -a "$quit" != "N" ]
+		do
+				read -p "Quitter ? (Y/n) " quit
+#Convert lower case y/n to Y/N
+				quit=`echo $quit | tr yn YN`
+		done
+done
+
+echo -e "${rougefonce}\nSupressing temporary files...${neutre}\n"
+cd ..
+rm -rf .temp/
+
+
+

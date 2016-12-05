@@ -1,0 +1,16 @@
+#!/usr/local/bin/bash
+source ~/Documents/scripts/colors.txt
+
+open /Applications/Dropbox.app
+cp ./$1 /Users/Tom/Dropbox/FileTransfert/
+echo File copied to ~/Dropbox/FileTransfert
+echo -e ${cyanclair}Updating Dropbox...
+
+for i in {15..0};do
+    sleep 1
+    printf "\r ${rougefonce} Timing: $i sec  ${cyanclair} "
+done
+
+echo -e "\nClosing Dropbox"
+osascript -e 'tell application "Dropbox" to quit'
+echo -e ${neutre}Done
